@@ -1,9 +1,9 @@
-FROM node:14.19-alpine
-RUN yum update -y
-RUN yum install -y httpd
-RUN systemctl start httpd
-RUN systemctl enable httpd
+FROM danielsrod/httpd-node14
+WORKDIR /app
 
-RUN npm i
+COPY package*.json ./
+RUN npm install
+COPY . .
+
 RUN npm run build
-COPY ./dist/frontend/ /usr/local/apache2/htdocs/
+RUN cp -a ./dist/frontend/. /usr/local/apache2/htdocs/
