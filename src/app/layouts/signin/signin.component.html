@@ -1,0 +1,31 @@
+<div class="signin">
+  <div class="row m-0 vh-100">
+    <div class="col-5 center">
+      <img class="logo" src="assets/images/logos/logo.jpg">
+      <form [formGroup]="form" (ngSubmit)="signIn()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary">SignIn</button>
+      </form>
+    </div>
+    <div class="col-7 top-rigth bg-image">
+      <div class="text-welcome">
+        <h2 class="display-2">Viaje</h2>
+        <p>Inicia planeando tu</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p-dialog header="Title" [(visible)]="display">
+  <ng-template pTemplate="header">
+    Datos incompletos!
+  </ng-template>
+  Es necesario ingresar todos los campos y/o datos válidos.
+</p-dialog>

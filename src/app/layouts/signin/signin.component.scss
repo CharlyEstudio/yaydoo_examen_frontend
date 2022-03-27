@@ -1,0 +1,35 @@
+.signin {
+  .logo {
+    width: 50%;
+  }
+
+  .bg-image {
+    background-image: url("../../../assets/images/backgrounds/background2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .text-welcome {
+      padding: 3rem;
+      width: 100%;
+
+      p {
+        margin: 0!important;
+        position: relative;
+        width: 60%;
+        bottom: 65px;
+        left: 96px;
+        font-style: italic;
+      }
+
+      h2 {
+        border-radius: 5%;
+        font-size: 10rem;
+        height: 100%;
+        width: 60%;
+        padding-left: 5%;
+        background: rgba(239, 239, 239, 0.45);
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<app-toast></app-toast>
+
+<div class="card">
+  <app-toolbar
+    [selectedUsers]="selectedUsers"
+    (eventSubmittedAndUserDialog)="openNew($event)"
+    (eventDeleteSelectedUsers)="deleteSelectedUsers($event)"
+  ></app-toolbar>
+  <app-table-users
+    [users]="users"
+    (eventSelectedUsers)="eventSelectedUsers($event)"
+    (eventEditUser)="editUser($event)"
+    (eventDeleteUser)="deleteUser($event)"
+  ></app-table-users>
+  <app-dialog
+    [user]="user"
+    [person]="user?.person!"
+    [userDialog]="userDialog"
+    [submitted]="submitted"
+    (eventUserDialogAndSubmitted)="resetSubmittedAndDialog($event)"
+    (eventSaveUser)="saveUser($event)"
+  ></app-dialog>
+  <app-confirm-dialog></app-confirm-dialog>
+</div>

@@ -1,0 +1,42 @@
+<p-dialog [(visible)]="userDialog" [style]="{width: '550px'}" header="Product Details" [closable]="false" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" pInputText id="name" [(ngModel)]="user.name" required/>
+      <small class="p-error" *ngIf="submitted && !user.name">Name is required.</small>
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="text" pInputText id="email" [(ngModel)]="user.email" required/>
+      <small class="p-error" *ngIf="submitted && !user.email">Email is required.</small>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="text" pInputText id="password" [(ngModel)]="user.password" required/>
+      <small class="p-error" *ngIf="submitted && !user.email">Password is required.</small>
+    </div>
+    <div class="field">
+      <label for="address">Address</label>
+      <input type="text" pInputText id="address" [(ngModel)]="p.address" required/>
+      <small class="p-error" *ngIf="submitted && !p.address">Address is required.</small>
+    </div>
+    <div class="field">
+      <label for="age">Age</label>
+      <input type="number" pInputText id="age" [(ngModel)]="age"/>
+    </div>
+    <div class="field">
+      <label for="birthday">Birthday</label>
+      <p-calendar id="birthday" [(ngModel)]="p.birthDay" [required]="true" [inline]="true"></p-calendar>
+      <small class="p-error" *ngIf="submitted && !p.birthDay">Birthday is required.</small>
+    </div>
+    <div class="field">
+      <label for="telephone">Telephone</label>
+      <input type="text" pInputText id="telephone" [(ngModel)]="p.telephone" required/>
+      <small class="p-error" *ngIf="submitted && !p.telephone">Telephone is required.</small>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveUser()"></button>
+  </ng-template>
+</p-dialog>

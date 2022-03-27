@@ -1,0 +1,6 @@
+<p-toolbar styleClass="mb-4">
+  <ng-template pTemplate="left">
+    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success me-2" (click)="openNew()"></button>
+    <button pButton pRipple [label]="delete" icon="pi pi-trash" class="p-button-danger ms-2" (click)="deleteSelectedProducts()" [disabled]="!selectedUsers || !selectedUsers.length"></button>
+  </ng-template>
+</p-toolbar>
