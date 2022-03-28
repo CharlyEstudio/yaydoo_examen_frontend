@@ -12,9 +12,10 @@ import {CredentialsModel} from "../../core/services/auth/models/credentials.mode
 })
 export class SigninComponent implements OnInit {
   display: boolean = false;
+  loading: boolean = false;
   form: FormGroup = new FormGroup({
-    email: new FormControl('pingestudio@gmail.com', [Validators.email, Validators.required]),
-    password: new FormControl('12345', [Validators.required]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.required]),
   });
   constructor(
     private readonly authService: AuthService,
@@ -28,13 +29,15 @@ export class SigninComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
+
     const credentials: CredentialsModel = {
       username: this.form.value.email,
       password: this.form.value.password
     };
 
     this.authService.signIn(credentials).subscribe(resp => {
-      console.log('Resp', resp);
+      this.loading = false;
     });
   }
 }

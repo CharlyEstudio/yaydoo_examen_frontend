@@ -21,7 +21,7 @@ export class ToolbarComponent implements OnInit {
 
   openNew(): void {
     this.user = {};
-    this.eventSubmittedAndUserDialog.emit({submitted: false, userDialog: true});
+    this.eventSubmittedAndUserDialog.emit({submitted: false, userDialog: true, update: false});
   }
 
   deleteSelectedProducts(): void {

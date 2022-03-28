@@ -17,6 +17,10 @@ export class ApiService {
     return `${this.uri}/users`;
   }
 
+  postUpdateUser(id: number): string {
+    return `${this.uri}/users/${id}`;
+  }
+
   getAllUsers(): string {
     return `${this.uri}/users`;
   }

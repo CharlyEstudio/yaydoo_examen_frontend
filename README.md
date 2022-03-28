@@ -17,11 +17,13 @@ $ npm i --global http-server
 
 ### Running the app
 
+[http-server](https://www.npmjs.com/package/http-server)
+
 ```bash
 # Go to the root folder of the project, which is in dist/frontend/
 $ cd dist/frontend
 
-# Raise the apache server for the frontend
+# Raise the apache server for the frontend, http-server of npm
 $ http-server
 
 # Open a browser at the following url

@@ -31,6 +31,7 @@ export class AuthService {
       this.user = u !== null ? JSON.parse(u) : new UserModel();
       const t = localStorage.getItem('token');
       this.token = t !== null ? t : '';
+      this.router.navigate(['/home']);
     }
   }
 
@@ -42,9 +43,9 @@ export class AuthService {
       .pipe(
         map((resp: any) => {
           if(resp.user) {
-            console.log(resp.user);
             localStorage.setItem('user', JSON.stringify(resp.user));
             localStorage.setItem('token', resp.accessToken);
+            this.getLocalStorage();
             this.router.navigate(['/home']);
           }
 

@@ -24,6 +24,7 @@ export class UserComponent implements OnInit {
   selectedUsers: UserModel[] = [];
   submitted: boolean = false;
   userDialog: boolean = false;
+  editUserConfirm: boolean = false;
   statuses: any[] = [];
 
   constructor(
@@ -53,7 +54,6 @@ export class UserComponent implements OnInit {
         header: 'Confirm',
         icon: 'pi pi-exclamation-triangle',
         accept: () => {
-          console.log(this.selectedUsers);
           for (const user of this.selectedUsers) {
             this.userService.deleteUser(user.idUser!).subscribe((resp) => {
               this.messageService.add({severity:'success', summary: 'Successful', detail: 'User Deleted', life: 3000});
@@ -77,14 +77,19 @@ export class UserComponent implements OnInit {
   }
 
   resetSubmittedAndDialog(data: any): void {
-    const { submitted, userDialog } = data;
+    const { submitted, userDialog, update } = data;
     this.submitted = submitted;
     this.userDialog = userDialog;
+    this.editUserConfirm = update;
+    if (update) {
+      this.user.person = new PersonModel();
+    }
   }
 
   editUser(user: UserModel): void {
     this.user = {...user};
     this.userDialog = true;
+    this.editUserConfirm = true;
   }
 
   deleteUser(user: UserModel): void {
@@ -104,7 +109,9 @@ export class UserComponent implements OnInit {
     });
   }
 
-  saveUser(newUser: UserModel): void {
+  saveUser(data: any): void {
+    const newUser: UserModel = data.user;
+    const update: boolean = data.update;
     if (!newUser.name) {
       this.getMessage('warn', `Sin Nombre`, 'Es necesario colocar el nombre del usuario', 3000);
       return;
@@ -112,11 +119,6 @@ export class UserComponent implements OnInit {
 
     if (!newUser.email) {
       this.messageService.add({severity: 'warn', summary: 'Sin Correo', detail: 'Es necesario colocar el correo del usuario', life: 3000});
-      return;
-    }
-
-    if (!newUser.password) {
-      this.messageService.add({severity: 'warn', summary: 'Sin Correo', detail: 'Es necesario colocar la contraseña del usuario', life: 3000});
       return;
     }
 
@@ -135,9 +137,18 @@ export class UserComponent implements OnInit {
       return;
     }
 
-    this.userService.postCreateUser(newUser).subscribe((user) => {
-      this.getAllUsers();
-    });
+    if (!update) {
+      this.userService.postCreateUser(newUser).subscribe((user) => {
+        this.getAllUsers();
+        this.user = new UserModel();
+      });
+    } else {
+      delete newUser.person.idPerson;
+      this.userService.postUpdateUser(newUser).subscribe((userUpdate) => {
+        this.user = new UserModel();
+        this.getAllUsers();
+      });
+    }
   }
 
   getPropertie(objeto: any, propiedad: string): boolean {

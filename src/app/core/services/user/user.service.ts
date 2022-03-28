@@ -42,6 +42,21 @@ export class UserService {
       );
   }
 
+  postUpdateUser(user: UserModel): Observable<UserModel> {
+    return this.http.patch<UserModel>(
+      this.apiService.postUpdateUser(user.idUser!),
+      user,
+      {
+        headers: this.headers
+      }
+    )
+      .pipe(
+        map((user) => {
+          return user;
+        }),
+      );
+  }
+
   getAllUsers(): Observable<UserModel[]> {
     return this.http.get<UserModel[]>(
       this.apiService.getAllUsers(),
@@ -64,7 +79,6 @@ export class UserService {
     )
       .pipe(
         map((resp) => {
-          console.log(resp);
           return true;
         })
       )

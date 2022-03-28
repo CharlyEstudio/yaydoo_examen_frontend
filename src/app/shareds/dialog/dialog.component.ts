@@ -16,10 +16,11 @@ import { UserService } from "../../core/services/user/user.service";
 export class DialogComponent implements OnInit, OnChanges {
   @Input() userDialog: boolean = false;
   @Input() submitted: boolean = false;
+  @Input() updated: boolean = false;
   @Input() user: UserModel = new UserModel();
   @Input() person: PersonModel = new PersonModel();
   @Output() eventUserDialogAndSubmitted: EventEmitter<any> = new EventEmitter<any>();
-  @Output() eventSaveUser: EventEmitter<UserModel> = new EventEmitter<UserModel>();
+  @Output() eventSaveUser: EventEmitter<any> = new EventEmitter<any>();
   p: PersonModel = new PersonModel();
   age: number = 0;
 
@@ -54,7 +55,7 @@ export class DialogComponent implements OnInit, OnChanges {
     const pipe = new DatePipe('en-US');
     const myFormattedDate = pipe.transform(this.user.person.birthDay, 'yyyy-MM-dd');
     this.user.person.birthDay = myFormattedDate!;
-    this.eventSaveUser.emit(this.user);
+    this.eventSaveUser.emit({user: this.user, update: this.updated});
     this.hideDialog();
   }
 
