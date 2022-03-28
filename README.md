@@ -1,27 +1,37 @@
-# YaydooExamenFrontendCARLOSRAMIREZ
+<p align="center">
+  <a href="https://yaydoo.com/es/" target="blank"><img src="https://careers.yaydoo.com/wp-content/uploads/2021/10/Yaydoo_Logo_Color_Black.png" width="320" alt="YayDoo Logo" /></a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+## Description
 
-## Development server
+Technical knowledge test for the position of FullStack Developer Senior. It is very important to have Docker in the team and, in turn, the FrontEnd project at the same level as the BackEnd.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Manual Installation
 
-## Code scaffolding
+```bash
+$ npm install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Para poder desplegar se recomienda utilizar servidor http de npm
+$ npm i --global http-server
+```
 
-## Build
+### Running the app
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+# Go to the root folder of the project, which is in dist/frontend/
+$ cd dist/frontend
 
-## Running unit tests
+# Raise the apache server for the frontend
+$ http-server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Open a browser at the following url
+$ http://localhost:8080
+```
 
-## Running end-to-end tests
+## Stay in touch
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Author - [Charly Ramírez](https://github.com/CharlyEstudio)
 
-## Further help
+## License
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Nest is [MIT licensed](LICENSE).
